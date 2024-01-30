@@ -1,6 +1,9 @@
 import './styles/index.css'
-import { sleep } from './utils'
+import { sleep, sleep2 } from './utils'
 console.log('webpack-appdev-template')
 
-await sleep(2 * 1000)
-console.log('1 seconds later')
+// sleep(2 * 1000).then(() => {
+//   console.log('2 seconds later')
+// })
+sleep()
+sleep2()

@@ -1,9 +1,10 @@
 last 2 versions
 # not ie <= 8
 > 1%
+not dead
 
 # Babel编译产物对比
 # chrome 68
 # chrome 20
 # firefox 58
-# firefox 26
+firefox 26

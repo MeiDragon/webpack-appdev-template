@@ -1,4 +1,5 @@
 .box {
+  box-sizing: border-box;
   width: 111px;
   height: 111px;
   margin: 0 auto;

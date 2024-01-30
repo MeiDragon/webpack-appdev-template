@@ -13,8 +13,8 @@ const config = {
   output: {
     path: path.resolve(__dirname, './dist'), // 绝对路径，磁盘存放路径
     pathinfo: false, // 去掉路径信息
-    filename: isEnvProd ? '[contenthash:8].bundle.js' : '[name].bundle.js', // 入口模块名
-    chunkFilename: isEnvProd ? 'async-[contenthash:8].bundle.js' : 'async-[name].bundle.js', // 非入口模块名
+    filename: isEnvProd ? '[name].[contenthash:8].bundle.js' : '[name].bundle.js', // 入口模块名
+    chunkFilename: isEnvProd ? 'async-[name]-[contenthash:8].bundle.js' : 'async-[name].bundle.js', // 非入口模块名
     clean: true // 相当于 clean-webpack-plugin 功能
   },
   resolve: {
@@ -23,7 +23,7 @@ const config = {
       '@components': path.resolve(__dirname, './src/components'),
       '@utils': path.resolve(__dirname, './src/utils')
     },
-    extensions: [".tsx",".ts",".jsx",".js"],
+    extensions: [".ts", ".js", ".tsx", ".jsx"],
     symlinks: false, // 无需软链
   },
   module: {
@@ -75,17 +75,22 @@ const config = {
         ],
       },
       {
-        test: /\.(js|ts|jsx|tsx)$/,
-        use: [
-          {
-            loader: 'esbuild-loader',
-            options: {
-              loader: 'tsx',
-              target: 'esnext',
-            },
-          },
-        ],
+        test: /\.[jt]s$/i,
+        use: 'babel-loader',
+        exclude: /node_modules/
       },
+      // {
+      //   test: /\.[jt]sx?$/,
+      //   use: [
+      //     {
+      //       loader: 'esbuild-loader',
+      //       options: {
+      //         // loader: 'tsx',
+      //         target: 'es2015',
+      //       },
+      //     },
+      //   ],
+      // },
     ],
   },
   plugins: [
