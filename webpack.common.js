@@ -74,23 +74,23 @@ const config = {
           'sass-loader',
         ],
       },
-      {
-        test: /\.[jt]s$/i,
-        use: 'babel-loader',
-        exclude: /node_modules/
-      },
       // {
-      //   test: /\.[jt]sx?$/,
-      //   use: [
-      //     {
-      //       loader: 'esbuild-loader',
-      //       options: {
-      //         // loader: 'tsx',
-      //         target: 'es2015',
-      //       },
-      //     },
-      //   ],
+      //   test: /\.[jt]s$/i,
+      //   use: 'babel-loader',
+      //   exclude: /node_modules/
       // },
+      {
+        test: /\.[jt]sx?$/,
+        use: [
+          {
+            loader: 'esbuild-loader',
+            options: {
+              // loader: 'tsx',
+              target: 'es2015',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [

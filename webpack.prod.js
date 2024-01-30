@@ -8,6 +8,7 @@ const PurgeCSSPlugin = require('purgecss-webpack-plugin').PurgeCSSPlugin // css 
 const CompressionPlugin = require('compression-webpack-plugin') // 开启gzip压缩
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin // 产物分析
 const commonWebpackConfig = require('./webpack.common.js')
+const { EsbuildPlugin } = require('esbuild-loader')
 /**
  * @type {import("webpack").Configuration}
  */
@@ -27,31 +28,41 @@ const config = merge(commonWebpackConfig, {
     runtimeChunk: true, // 为运行时代码创建一个额外的 chunk，减少 entry chunk 体积
     moduleIds: 'deterministic', // hash 不随依赖改变而改变
     minimizer: [
-      new TerserWebpackPlugin({
-        parallel: 4,
-        terserOptions: {
-          parse: {
-            ecma: 8,
-          },
-          compress: {
-            ecma: 5,
-            warnings: false,
-            comparisons: false,
-            inline: 2,
-          },
-          mangle: {
-            safari10: true,
-          },
-          output: {
-            ecma: 5,
-            comments: false,
-            ascii_only: true,
-          },
-        },
-      }),
-      new CssMinimizerPlugin({
-        parallel: 4,
-      }),
+      // new TerserWebpackPlugin({
+      //   parallel: 4,
+      //   terserOptions: {
+      //     parse: {
+      //       ecma: 8,
+      //     },
+      //     compress: {
+      //       ecma: 5,
+      //       warnings: false,
+      //       comparisons: false,
+      //       inline: 2,
+      //     },
+      //     mangle: {
+      //       safari10: true,
+      //     },
+      //     output: {
+      //       ecma: 5,
+      //       comments: false,
+      //       ascii_only: true,
+      //     },
+      //   },
+      // }),
+      // new CssMinimizerPlugin({
+      //   parallel: 4,
+      // }),
+      new EsbuildPlugin({
+        target: 'es2015',
+        css: true, // Apply minification to CSS assets
+        minify: true, // Enable JS minification. Enables all minify* flags below.
+        minifyWhitespace: true, // 去掉空格
+        minifyIdentifiers: true, // 缩短标识符
+        minifySyntax: true, // 缩短语法
+        legalComments: 'none', // 去掉注释
+        // implementation: esbuild, // 自定义 esbuild 版本
+      })
     ],
     splitChunks: {
       chunks: 'all', // 优化范围
