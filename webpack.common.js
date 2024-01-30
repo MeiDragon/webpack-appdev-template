@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const isEnvProd = process.env.NODE_ENV === 'production'
+const isBabel = process.env.Transpiler === 'babel'
 
 /**
  * @type {import("webpack").Configuration}
@@ -24,7 +25,7 @@ const config = {
       '@utils': path.resolve(__dirname, './src/utils')
     },
     extensions: [".ts", ".js", ".tsx", ".jsx"],
-    symlinks: false, // 无需软链
+    // symlinks: false, // 🚨🚨🚨 配置为true会导致transform-runtime无法按预期生效
   },
   module: {
     rules: [
@@ -74,11 +75,11 @@ const config = {
           'sass-loader',
         ],
       },
-      // {
-      //   test: /\.[jt]s$/i,
-      //   use: 'babel-loader',
-      //   exclude: /node_modules/
-      // },
+      isBabel ? {
+        test: /\.[jt]s$/i,
+        use: 'babel-loader',
+        exclude: /node_modules/
+      } :
       {
         test: /\.[jt]sx?$/,
         use: [

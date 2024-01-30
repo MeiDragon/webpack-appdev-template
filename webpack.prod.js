@@ -21,7 +21,7 @@ const config = merge(commonWebpackConfig, {
     new PurgeCSSPlugin({
       paths: glob.sync(`${path.resolve(__dirname, 'src')}/**/*`, { nodir: true }),
     }),
-    new CompressionPlugin(),
+    // new CompressionPlugin(),
   ],
   optimization: {
     minimize: true,

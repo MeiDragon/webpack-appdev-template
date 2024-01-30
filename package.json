@@ -16,10 +16,10 @@
     "webpack"
   ],
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack serve --config webpack.dev.js",
-    "see-dev": "cross-env NODE_ENV=development webpack --config webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js",
-    "babel": "babel src/index.ts --out-dir dist"
+    "esbuild-dev": "cross-env NODE_ENV=development Transpiler=esbuild webpack --config webpack.dev.js",
+    "babel-dev": "cross-env NODE_ENV=development Transpiler=babel webpack --config webpack.dev.js",
+    "babel-build": "cross-env NODE_ENV=production Transpiler=babel webpack --config webpack.prod.js",
+    "esbuild-build": "cross-env NODE_ENV=production Transpiler=esbuild webpack --config webpack.prod.js"
   },
   "devDependencies": {
     "@babel/core": "^7.23.9",
