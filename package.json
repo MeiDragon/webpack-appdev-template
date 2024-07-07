@@ -1,57 +1,66 @@
 {
-  "name": "webpack-appdev-template",
-  "version": "1.0.0",
-  "description": "基于 Webpack 的应用开发初始模板",
-  "author": "HduSy <bilisantu@gmail.com>",
-  "homepage": "https://github.com/MeiDragon/webpack-appdev-template",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MeiDragon/webpack-appdev-template"
-  },
-  "bugs": {
-    "url": "https://github.com/MeiDragon/webpack-appdev-template/issues"
-  },
-  "keywords": [
-    "template",
-    "webpack"
-  ],
-  "scripts": {
-    "esbuild-dev": "cross-env NODE_ENV=development Transpiler=esbuild webpack --config webpack.dev.js",
-    "babel-dev": "cross-env NODE_ENV=development Transpiler=babel webpack --config webpack.dev.js",
-    "babel-build": "cross-env NODE_ENV=production Transpiler=babel webpack --config webpack.prod.js",
-    "esbuild-build": "cross-env NODE_ENV=production Transpiler=esbuild webpack --config webpack.prod.js"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "@babel/plugin-transform-runtime": "^7.23.9",
-    "@babel/preset-env": "^7.23.9",
-    "@babel/preset-typescript": "^7.23.3",
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^9.1.3",
-    "compression-webpack-plugin": "^11.0.0",
-    "cross-env": "^7.0.3",
-    "css-loader": "^6.9.1",
-    "css-minimizer-webpack-plugin": "^6.0.0",
-    "esbuild-loader": "^4.0.3",
-    "html-webpack-plugin": "^5.6.0",
-    "mini-css-extract-plugin": "^2.7.7",
-    "postcss": "^8.4.33",
-    "postcss-loader": "^8.0.0",
-    "postcss-preset-env": "^9.3.0",
-    "purgecss-webpack-plugin": "^5.0.0",
-    "sass": "^1.70.0",
-    "sass-loader": "^14.0.0",
-    "speed-measure-webpack-plugin": "^1.5.0",
-    "style-loader": "^3.3.4",
-    "thread-loader": "^4.0.2",
-    "typescript": "^5.3.3",
-    "webpack": "^5.90.0",
-    "webpack-bundle-analyzer": "^4.10.1",
-    "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1",
-    "webpack-merge": "^5.10.0"
-  },
-  "dependencies": {
-    "@babel/runtime-corejs3": "^7.23.9"
-  }
+	"name": "webpack-appdev-template",
+	"version": "1.0.0",
+	"description": "基于 Webpack 的应用开发初始模板",
+	"author": "HduSy <bilisantu@gmail.com>",
+	"homepage": "https://github.com/MeiDragon/webpack-appdev-template",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MeiDragon/webpack-appdev-template"
+	},
+	"bugs": {
+		"url": "https://github.com/MeiDragon/webpack-appdev-template/issues"
+	},
+	"keywords": [
+		"template",
+		"webpack"
+	],
+	"scripts": {
+		"esbuild-dev": "cross-env NODE_ENV=development Transpiler=esbuild webpack serve --config webpack.dev.ts",
+		"babel-dev": "cross-env NODE_ENV=development Transpiler=babel webpack serve --config webpack.dev.ts",
+		"babel-build": "cross-env NODE_ENV=production Transpiler=babel webpack --config webpack.prod.ts",
+		"esbuild-build": "cross-env NODE_ENV=production Transpiler=esbuild webpack --config webpack.prod.ts",
+		"style": "npx prettier --write '**/*.{js,ts,tsx,json,md,css,scss,html}'"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.23.9",
+		"@babel/plugin-transform-runtime": "^7.23.9",
+		"@babel/preset-env": "^7.23.9",
+		"@babel/preset-typescript": "^7.23.3",
+		"@types/node": "^20.14.10",
+		"@types/speed-measure-webpack-plugin": "^1.3.6",
+		"@types/webpack": "^5.28.5",
+		"@types/webpack-dev-server": "^4.7.2",
+		"babel-cli": "^6.26.0",
+		"babel-loader": "^9.1.3",
+		"compression-webpack-plugin": "^11.0.0",
+		"cross-env": "^7.0.3",
+		"css-loader": "^6.9.1",
+		"css-minimizer-webpack-plugin": "^6.0.0",
+		"esbuild-loader": "^4.0.3",
+		"glob": "^10.4.3",
+		"html-webpack-plugin": "^5.6.0",
+		"mini-css-extract-plugin": "^2.7.7",
+		"postcss": "^8.4.33",
+		"postcss-loader": "^8.0.0",
+		"postcss-preset-env": "^9.3.0",
+		"prettier": "^3.3.2",
+		"purgecss-webpack-plugin": "^5.0.0",
+		"sass": "^1.70.0",
+		"sass-loader": "^14.0.0",
+		"speed-measure-webpack-plugin": "^1.5.0",
+		"style-loader": "^3.3.4",
+		"terser-webpack-plugin": "^5.3.10",
+		"thread-loader": "^4.0.2",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.3.3",
+		"webpack": "^5.90.0",
+		"webpack-bundle-analyzer": "^4.10.1",
+		"webpack-cli": "^5.1.4",
+		"webpack-dev-server": "^4.15.1",
+		"webpack-merge": "^5.10.0"
+	},
+	"dependencies": {
+		"@babel/runtime-corejs3": "^7.23.9"
+	}
 }
